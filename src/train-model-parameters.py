@@ -60,13 +60,13 @@ def eval_model(model, X_test, y_test):
     # calculate accuracy
     y_hat = model.predict(X_test)
     acc = np.average(y_hat == y_test)
-    print('Accuracy:', acc)
+    print(f"Accuracy: {acc}")
     mlflow.log_metric("Accuracy", acc)
 
     # calculate AUC
     y_scores = model.predict_proba(X_test)
     auc = roc_auc_score(y_test,y_scores[:,1])
-    print('AUC: ' + str(auc))
+    print(f"AUC: {auc}")
     mlflow.log_metric("AUC", auc)
 
     # plot ROC curve
