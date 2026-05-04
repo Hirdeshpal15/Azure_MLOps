@@ -77,6 +77,3 @@ jobs:
 
           echo "prod_accuracy=$ACC" >> "$GITHUB_OUTPUT"
           echo "prod_auc=$AUC" >> "$GITHUB_OUTPUT"
-
-      - name: Skip PR comment (GitHub permission limitation)
-        run: echo "Skipping PR comment step. Check Azure ML job for metrics."
