@@ -53,7 +53,7 @@ def create_or_update_deployment(
     deployment_name: str,
 ) -> ManagedOnlineDeployment:
     model = Model(
-        path="./model",
+        path="model",
         type=AssetTypes.MLFLOW_MODEL,
         description="MLflow diabetes classification model",
     )
@@ -68,7 +68,6 @@ def create_or_update_deployment(
         endpoint_name=endpoint_name,
         model=model,
         environment=env,
-        code_configuration=None,   # 👈 VERY IMPORTANT
         instance_type="Standard_D2as_v4",
         instance_count=1,
     )
