@@ -59,8 +59,20 @@ def create_or_update_deployment(
     )
 
     env = Environment(
-        name="inference-env-fixed",
-        image="mcr.microsoft.com/azureml/minimal-ubuntu20.04-py38-cpu-inference:latest"
+        name="inference-env",
+        image="mcr.microsoft.com/azureml/openmpi4.1.0-ubuntu20.04:latest",
+        conda_file="""
+    name: inference-env
+    channels:
+    - defaults
+    dependencies:
+    - python=3.8
+    - pip
+    - pip:
+        - mlflow
+        - azureml-inference-server-http
+        - scikit-learn
+    """
     )
 
     deployment = ManagedOnlineDeployment(
